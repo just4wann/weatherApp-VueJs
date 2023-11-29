@@ -1,7 +1,6 @@
 <script setup>
 import { ref } from 'vue';
 import { UTCConverter } from '../utils/utcConverter';
-import { humValueCounter, windValueCounter, pressValueCounter } from '../utils/valueCounter';
 
 const props = defineProps({
   weatherFetchData: Object,
@@ -11,13 +10,13 @@ const dataComponent = ref([
   {
     id: 1,
     name: 'Wind',
-    value: `${windValueCounter.value} mph`,
+    value: `${props.weatherFetchData?.wind.speed} mph`,
     icon: 'src/assets/icons/weather/wind (1).png',
   },
   {
     id: 2,
     name: 'Humidity',
-    value: `${humValueCounter.value} %`,
+    value: `${props.weatherFetchData?.main.humidity} %`,
     icon: 'src/assets/icons/weather/humidity (1).png',
   },
 
@@ -36,7 +35,7 @@ const dataComponent = ref([
   {
     id: 5,
     name: 'Pressure',
-    value: `${pressValueCounter.value} hpa`,
+    value: `${props.weatherFetchData?.main.pressure} hpa`,
     icon: 'src/assets/icons/weather/pressure.png',
   },
 ]);

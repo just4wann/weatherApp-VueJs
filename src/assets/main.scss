@@ -80,15 +80,15 @@ main {
               animation: bounce 1.2s infinite;
             }
 
-            .temp-text {
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              flex-direction: column;
+            p.temp {
+              font-size: 2rem;
+              position: relative;
 
-              p.temp {
-                font-size: 3rem;
-                position: relative;
+              .temp-text {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
 
                 span.celcius {
                   font-weight: 100;

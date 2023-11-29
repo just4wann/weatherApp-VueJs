@@ -1,11 +1,8 @@
 import { ref } from 'vue';
 
 export const tempValueCounter = ref(0);
-export const humValueCounter = ref(0);
-export const windValueCounter = ref(0);
-export const pressValueCounter = ref(0);
-
-export const counterValue = async (variable, value) => {
+export const feelsLikeValueCounter = ref(0);
+export const counterValue = ([variable1, variable2], [value1, value2]) => {
   let start = 0;
   const stop = new Date().getTime();
   setInterval(function () {
@@ -13,9 +10,11 @@ export const counterValue = async (variable, value) => {
       clearInterval();
       return;
     }
-    variable.value = start++;
+    variable1.value = start++;
+    variable2.value = start++;
   }, 25);
   setTimeout(() => {
-    variable.value = value;
+    variable1.value = Math.round(value1 / 10);
+    variable2.value = Math.round(value2 / 10);
   }, 1000);
 };

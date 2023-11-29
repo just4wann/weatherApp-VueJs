@@ -3,7 +3,7 @@ import { ref, computed } from 'vue';
 import { API_KEY, BASE_URL } from './constants';
 import { setWeatherIcon, setCountryIcon, weatherIcon, countryIcon } from './utils/setIcon';
 import { updateComponent, numKey } from './utils/updateComponent';
-import { counterValue, tempValueCounter, windValueCounter, humValueCounter, pressValueCounter } from './utils/valueCounter';
+import { counterValue, tempValueCounter, feelsLikeValueCounter } from './utils/valueCounter';
 import ButtonSearch from './components/Button.vue';
 import CurrentCondition from './components/CurrentCondition.vue';
 import DateAndTime from './components/DateAndTime.vue';
@@ -27,7 +27,7 @@ const getWeather = async () => {
 
 const utilityFunction = () => {
   setWeatherIcon(weatherData.value.weather[0].main);
-  counterValue(tempValueCounter, Math.round(weatherData.value.main.temp / 10));
+  counterValue([tempValueCounter, feelsLikeValueCounter], [weatherData.value.main.temp, weatherData.value.main.feels_like]);
   setCountryIcon(weatherData.value.sys.country);
   updateComponent();
   console.log(weatherData.value);
@@ -47,7 +47,7 @@ const utilityFunction = () => {
             <CurrentCondition :weatherFetchData="weatherData" :setImageWeather="weatherIcon" />
             <DateAndTime />
           </section>
-          <section class="location-name">
+          <section class="location-name" v-if="weatherData">
             <LocationInfo :weatherFetchData="weatherData" :countryIcon="countryIcon" />
           </section>
         </div>
