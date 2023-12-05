@@ -54,7 +54,7 @@ const utilityFunction = () => {
       </div>
       <div class="right-content">
         <div class="wrapper-right">
-          <Transition>
+          <Transition mode="out-in">
             <Highlights :weatherFetchData="weatherData" :key="numKey" v-if="weatherData" />
           </Transition>
         </div>

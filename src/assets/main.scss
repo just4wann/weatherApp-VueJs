@@ -140,20 +140,25 @@ main {
       flex: 2;
       padding: 30px 20px;
 
-      .v-enter-active,
-      .v-leave-active {
-        transition: all 0.5s ease;
-      }
-
-      .v-enter-active {
-        transition-delay: 0.3s;
+      .v-leave-to {
+        opacity: 0;
+        transform: translateY(-40px);
       }
 
       .v-enter-from {
-        transform: translateY(200%);
+        opacity: 0;
+        transform: translateY(40px);
       }
-      .v-leave-to {
-        transform: translateY(-80%);
+
+      .v-enter-to,
+      .v-leave-from {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .v-enter-active,
+      .v-leave-active {
+        transition: all 0.5s ease;
       }
 
       .wrapper {
